@@ -22,5 +22,14 @@
 (lsp-define-stdio-client lsp-vue "vue"
 			 lsp-vue--get-root '("vls"))
 
+(defun lsp-vue-mmm-enable ()
+  "Enable lsp-vue for all major-modes supported by vue-mode (based on mmm-mode)."
+  (interactive)
+  (lsp-vue-enable)
+  (when (and lsp-enable-flycheck (featurep 'lsp-flycheck) (featurep 'vue-mode))
+    (require 'vue-mode)
+    (dolist (mode-settings vue-modes)
+      (lsp-flycheck-add-mode (plist-get mode-settings ':mode)))))
+
 (provide 'lsp-vue)
 ;;; lsp-vue.el ends here
