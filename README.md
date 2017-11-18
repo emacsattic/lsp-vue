@@ -12,12 +12,18 @@ npm install vue-language-server -g
 yarn global add vue-language-server
 ```
 
-
 Install [`lsp-mode`](https://github.com/emacs-lsp/lsp-mode) first, and either clone
 this repository. Add the following to your emacs configuration:
 
 ``` emacs-lisp
 (require 'lsp-mode)
 (require 'lsp-vue)
-(add-hook 'vue-mode-hook #'lsp-vue-enable)
+(add-hook 'vue-mode-hook #'lsp-vue-mmm-enable)
+```
+`lsp-vue-mmm-enable` depends on [vue-mode](https://github.com/AdamNiederer/vue-mode) and will enable flycheck for every major-mode supported by `vue-mode`.
+
+Also you can enable `lsp-vue` for any needed major-mode with call of `lsp-vue-enable` or with hook like this
+
+``` emacs-lisp
+(add-hook 'major-mode-hook #'lsp-vue-enable)
 ```
