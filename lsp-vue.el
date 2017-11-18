@@ -4,9 +4,8 @@
 
 ;; Author: Nikita Sivakov <cryptomaniac.512@gmail.com>
 ;; Version: 1.0
-;; Package-Requires: ((lsp-mode "3.0"))
-;; Keywords: vue vetur lsp
-;; URL: https://github.com/cryptomaniac512/lsp-vue
+;; Package-Requires: ((emacs "25.1") (lsp-mode "3.0"))
+;; URL: https://github.com/emacs-lsp/lsp-vue
 
 ;;; Commentary:
 
@@ -23,7 +22,7 @@
 			 lsp-vue--get-root '("vls"))
 
 (defun lsp-vue-mmm-enable ()
-  "Enable lsp-vue for all major-modes supported by vue-mode (based on mmm-mode)."
+  "Enable lsp-vue for all major-modes supported by ‘vue-mode’."
   (interactive)
   (lsp-vue-enable)
   (when (and lsp-enable-flycheck (featurep 'lsp-flycheck) (featurep 'vue-mode))
