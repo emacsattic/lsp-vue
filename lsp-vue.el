@@ -40,6 +40,10 @@
 ;;; Code:
 
 (require 'lsp-mode)
+(require 'json)
+
+(defvar lsp-vue-config-file
+  "jsconfig.json")
 
 (defconst lsp-vue--get-root (lsp-make-traverser #'(lambda (dir)
 							   (directory-files dir nil "package.json"))))
@@ -47,6 +51,17 @@
 (lsp-define-stdio-client lsp-vue "vue"
 			 lsp-vue--get-root '("vls"))
 
+(defun lsp-vue--configuration ()
+  (let ((filename (expand-file-name lsp-vue-config-file)))
+    (if (file-exists-p filename)
+        (json-read-file filename)
+      '())))
+
+(defun lsp-vue--set-configuration ()
+  "Send project config to lsp-server"
+  (lsp--set-configuration (lsp-vue--configuration)))
+
+(add-hook 'lsp-after-initialize-hook 'lsp-vue--set-configuration)
 (defun lsp-vue-mmm-enable ()
   "Enable lsp-vue for all major-modes supported by ‘vue-mode’."
   (interactive)
