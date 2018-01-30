@@ -27,3 +27,18 @@ Also you can enable `lsp-vue` for any needed major-mode with call of `lsp-vue-en
 ``` emacs-lisp
 (add-hook 'major-mode-hook #'lsp-vue-enable)
 ```
+
+
+## Configuration
+
+```
+# with customize group
+
+M-x customize-group RET lsp-vue # custom vetur and html configuration
+
+# with lisp
+
+(setq vetur.validation.template t)
+```
+
+see also: https://vuejs.github.io/vetur/
