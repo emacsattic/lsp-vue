@@ -190,6 +190,11 @@
   :group 'vetur
   :type 'boolean)
 
+(defcustom prettier.eslintIntegration
+  nil
+  "whether to set prettier integrate with eslint"
+  :group 'prettier
+  :type 'boolean)
 
 (defun lsp-vue--vetur-configuration (features)
   "Get all features configuration."
@@ -234,7 +239,7 @@
 
 (defun lsp-vue--set-configuration ()
   "Send project config to lsp-server"
-    (lsp--set-configuration (lsp-vue--vetur-configuration '(vetur html))))
+    (lsp--set-configuration (lsp-vue--vetur-configuration '(vetur html prettier))))
 
 (add-hook 'lsp-after-initialize-hook 'lsp-vue--set-configuration)
 
