@@ -101,6 +101,12 @@
 
 (defcustom vetur.validation.style
   t
+  "Validate css/scss/less in <style>"
+  :group 'vetur
+  :type 'boolean)
+
+(defcustom vetur.validation.script
+  t
   "Validate js/ts in <script>"
   :group 'vetur
   :type 'boolean)
